@@ -11,6 +11,7 @@ var wms_layers = [];
     attributions: ' &middot; <a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
                 url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
             })
+            
         });
 
         var lyr_OSMStandard_1 = new ol.layer.Tile({

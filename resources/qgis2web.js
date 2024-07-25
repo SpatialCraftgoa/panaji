@@ -422,7 +422,7 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 //abstract
 
 
-isTracking = false;
+isTracking = true; // Start tracking from the beginning
 
 var geolocateControl = (function(Control) {
     geolocateControl = function(opt_options) {
@@ -431,23 +431,24 @@ var geolocateControl = (function(Control) {
         button.className += ' fa fa-map-marker';
 
         var handleGeolocate = function() {
-            if (isTracking) {
-                map.removeLayer(geolocateOverlay);
-                isTracking = false;
-            } else if (geolocation.getTracking()) {
-                map.addLayer(geolocateOverlay);
+            if (geolocation.getTracking()) {
                 var position = geolocation.getPosition();
                 if (position && position.length === 2 && position[0] !== undefined && position[1] !== undefined) {
                     map.getView().setCenter(position);
+                    map.getView().setZoom(16); // Optionally set a zoom level
                 } else {
                     console.error('Invalid position:', position);
                 }
-                isTracking = true;
             }
         };
 
+        var handleTouchStart = function(event) {
+            event.preventDefault(); // Prevent the default touch behavior
+            handleGeolocate();
+        };
+
         button.addEventListener('click', handleGeolocate, false);
-        button.addEventListener('touchstart', handleGeolocate, false);
+        button.addEventListener('touchstart', handleTouchStart, false);
 
         var element = document.createElement('div');
         element.className = 'geolocate ol-unselectable ol-control';
@@ -479,10 +480,10 @@ positionFeature.setStyle(new ol.style.Style({
     image: new ol.style.Circle({
         radius: 6,
         fill: new ol.style.Fill({
-            color: '#3399CC'
+            color: 'rgba(51, 153, 204, 0.6)'
         }),
         stroke: new ol.style.Stroke({
-            color: '#fff',
+            color: '#3399CC',
             width: 2
         })
     })
@@ -504,7 +505,10 @@ var geolocateOverlay = new ol.layer.Vector({
     })
 });
 
-geolocation.setTracking(true);
+map.addLayer(geolocateOverlay); // Add the overlay layer to the map
+
+geolocation.setTracking(true); // Start geolocation tracking
+
 
 
 //measurement

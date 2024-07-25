@@ -501,9 +501,13 @@ geolocation.on('change:position', function() {
 
 var geolocateOverlay = new ol.layer.Vector({
     source: new ol.source.Vector({
-        features: [accuracyFeature, positionFeature]
+        features: [
+            // accuracyFeature, // Commented out accuracyFeature
+            positionFeature
+        ]
     })
 });
+
 
 map.addLayer(geolocateOverlay); // Add the overlay layer to the map
 

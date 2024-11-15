@@ -255,32 +255,56 @@ $dropdown.append(new Option('All Trees', ''));
         }
     });
 
-    // Function to reset map to show all features
-    function resetMap() {
-        jsonSource_Trees_2.clear();
-        jsonSource_Trees_2.addFeatures(features_Trees_2);
-        
-        // Define the new center point and zoom level
-        var center = [8219519,1746726]; // Replace with your desired coordinates
-        var zoom = 15; // Set your desired zoom level
-        
-        // Set the view to the center point and zoom
-        map.getView().setCenter(center);
-        map.getView().setZoom(zoom);
+  /// Function to reset map to show all features
+function resetMap() {
+    jsonSource_Trees_2.clear();
+    jsonSource_Trees_2.addFeatures(features_Trees_2);
+
+    // Get the window width
+    var screenWidth = window.innerWidth;
+
+    // Define center points and zoom levels based on screen width
+    var center, zoom;
+    if (screenWidth < 600) {
+        // Use different center and zoom level for smaller screens
+        center = [8220318.0,1745872.8]; // Replace with a different center for small screens
+        zoom = 13; // Zoom level for small screens
+    } else {
+        // Default center and zoom for larger screens
+        center = [8219519, 1746726]; // Default center
+        zoom = 15; // Default zoom level
     }
-    
-    // Reset map on initial load
-    resetMap();
-    
-    const homebutton = document.getElementById('home_button');
-    homebutton.addEventListener('click', function() {
-        // Define the center point and zoom level
-        var center = [8219519,1746726]; // Replace with your desired coordinates
-        var zoom = 15; // Set your desired zoom level
-        
-        // Set the view to the center point and zoom
-        map.getView().setCenter(center);
-        map.getView().setZoom(zoom);
-    });
+
+    // Set the view to the center point and zoom
+    map.getView().setCenter(center);
+    map.getView().setZoom(zoom);
+}
+
+// Reset map on initial load
+resetMap();
+
+const homebutton = document.getElementById('home_button');
+homebutton.addEventListener('click', function() {
+    // Get the window width
+    var screenWidth = window.innerWidth;
+
+    // Define center points and zoom levels based on screen width
+    var center, zoom;
+    if (screenWidth < 600) {
+        // Use different center and zoom level for smaller screens
+        center = [8220318.0,1745872.8]; // Replace with a different center for small screens
+        zoom = 13; // Zoom level for small screens
+    } else {
+        // Default center and zoom for larger screens
+        center = [8219519, 1746726]; // Default center
+        zoom = 15; // Default zoom level
+    }
+
+    // Set the view to the center point and zoom
+    map.getView().setCenter(center);
+    map.getView().setZoom(zoom);
+});
+
+
 })
     

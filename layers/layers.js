@@ -259,16 +259,28 @@ $dropdown.append(new Option('All Trees', ''));
     function resetMap() {
         jsonSource_Trees_2.clear();
         jsonSource_Trees_2.addFeatures(features_Trees_2);
-        var extent = [8216522.173750, 1744991.831563, 8220563.547759, 1747406.056648];
-        map.getView().fit(extent, { size: map.getSize() });
+        
+        // Define the new center point and zoom level
+        var center = [8219519,1746726]; // Replace with your desired coordinates
+        var zoom = 15; // Set your desired zoom level
+        
+        // Set the view to the center point and zoom
+        map.getView().setCenter(center);
+        map.getView().setZoom(zoom);
     }
-
+    
     // Reset map on initial load
     resetMap();
-});
-
-const homebutton = document.getElementById('home_button');
-homebutton.addEventListener('click', function() {
-    var extent = [8216522.173750, 1744991.831563, 8220563.547759, 1747406.056648];
-    map.getView().fit(extent, { size: map.getSize() });
-});
+    
+    const homebutton = document.getElementById('home_button');
+    homebutton.addEventListener('click', function() {
+        // Define the center point and zoom level
+        var center = [8219519,1746726]; // Replace with your desired coordinates
+        var zoom = 15; // Set your desired zoom level
+        
+        // Set the view to the center point and zoom
+        map.getView().setCenter(center);
+        map.getView().setZoom(zoom);
+    });
+})
+    

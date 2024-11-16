@@ -267,12 +267,12 @@ function resetMap() {
     var center, zoom;
     if (screenWidth < 600) {
         // Use different center and zoom level for smaller screens
-        center = [8220318.0,1745872.8]; // Replace with a different center for small screens
+        center = [8219948.4,1746107.5]; // Replace with a different center for small screens
         zoom = 13; // Zoom level for small screens
     } else {
         // Default center and zoom for larger screens
         center = [8219519, 1746726]; // Default center
-        zoom = 15; // Default zoom level
+        zoom = 14.5; // Default zoom level
     }
 
     // Set the view to the center point and zoom
@@ -292,12 +292,12 @@ homebutton.addEventListener('click', function() {
     var center, zoom;
     if (screenWidth < 600) {
         // Use different center and zoom level for smaller screens
-        center = [8220318.0,1745872.8]; // Replace with a different center for small screens
+        center = [8219948.4,1746107.5]; // Replace with a different center for small screens
         zoom = 13; // Zoom level for small screens
     } else {
         // Default center and zoom for larger screens
         center = [8219519, 1746726]; // Default center
-        zoom = 15; // Default zoom level
+        zoom = 14.5; // Default zoom level
     }
 
     // Set the view to the center point and zoom
